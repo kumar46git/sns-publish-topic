@@ -14,8 +14,8 @@ Send a SNS Topic via GitHub Actions
 2. Add the following to your workflow
 
 ```yml
-- name: "Sending SMS Notification"
-  uses: nothingalike/sns-publish-topic@1.0.0
+- name: Publish SNS Topic
+  uses: nothingalike/sns-publish-topic@v1.0
   with:
     MESSAGE: "message"
     TOPIC_ARN: "arn:aws:sns:[your region]:[your account id]:[your topic name]"
