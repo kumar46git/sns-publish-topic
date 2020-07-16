@@ -28,9 +28,8 @@ function execute() {
       if (err) core.setFailed(err.Message); // an error occurred
       else {
         core.debug("Sending SMS");
-        const { MessageId } = await publishTextPromise();  
         core.debug("SMS sent!");
-        return MessageId;
+        return data.MessageId;
       }
     });
   }catch(error) {
