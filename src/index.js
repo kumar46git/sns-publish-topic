@@ -24,10 +24,9 @@ function execute() {
     const awsClient = new AWS.SNS({ apiVersion: "2010-03-31" });
 
     awsClient.publish(params, function(err, data) {
-      if (err) core.setFailed(err.Message); // an error occurred
+      if (err) core.setFailed(err.Message); 
       else {
-        core.debug("Sending SMS");
-        core.debug("SMS sent!");
+        core.debug("Published Topic Sent!");
         return data.MessageId;
       }
     });

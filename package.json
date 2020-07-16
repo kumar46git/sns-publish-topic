@@ -2,10 +2,7 @@
   "name": "sns-publish-topic",
   "version": "1.0.0",
   "description": "Send a SNS Topic via GitHub Actions",
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "sucrase ./src -d ./dist --transforms imports"
-  },
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nothingalike/sns-publish-topic.git"
