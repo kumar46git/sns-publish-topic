@@ -25,10 +25,7 @@
   "homepage": "https://github.com/nothingalike/sns-publish-topic#readme",
   "dependencies": {
     "@actions/core": "^1.1.0",
-    "@actions/github": "^4.0.0",
     "aws-sdk": "^2.630.0"
   },
-  "devDependencies": {
-    "sucrase": "^3.12.1"
-  }
+  "devDependencies": {}
 }

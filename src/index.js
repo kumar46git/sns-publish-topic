@@ -1,6 +1,5 @@
 const core = require('@actions/core');
 const AWS = require('aws-sdk');
-const github = require('@actions/github');
 
 function execute() {
   try{
@@ -16,9 +15,9 @@ function execute() {
       accessKeyId: AWS_ACCESS_KEY_ID,
       secretAccessKey: AWS_SECRET_ACCESS_KEY
     });
-    const payload = JSON.stringify(github.context.payload, undefined, 2)
+    
     const params = {
-      Message: payload,
+      Message: MESSAGE,
       TopicArn: TOPIC_ARN
     };
 
