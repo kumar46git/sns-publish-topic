@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const AWS = require('aws-sdk');
 const github = require('@actions/github');
 
-async function execute() {
+function execute() {
   try{
     const AWS_REGION = core.getInput("AWS_REGION") || process.env.AWS_REGION;
     const AWS_ACCESS_KEY_ID = core.getInput("AWS_ACCESS_KEY_ID") || process.env.AWS_ACCESS_KEY_ID;
@@ -22,17 +22,17 @@ async function execute() {
       TopicArn: TOPIC_ARN
     };
 
-    const publishTextPromise = new AWS.SNS({ apiVersion: "2010-03-31" })
-    .publish(params)
-    .promise();
+    const awsClient = new AWS.SNS({ apiVersion: "2010-03-31" });
 
-    core.debug("Sending SMS");
-
-    const { MessageId } = await publishTextPromise();
-
-    core.debug("SMS sent!");
-
-    return MessageId;
+    awsClient.publish(params, function(err, data) {
+      if (err) core.setFailed(err.Message); // an error occurred
+      else {
+        core.debug("Sending SMS");
+        const { MessageId } = await publishTextPromise();  
+        core.debug("SMS sent!");
+        return MessageId;
+      }
+    });
   }catch(error) {
     core.setFailed(error.message);
   }
