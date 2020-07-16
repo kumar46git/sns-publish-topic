@@ -2,11 +2,6 @@
 
 Send a SNS Topic via GitHub Actions
 
-## Prerequisites
-
-- A AWS Account. [Sign up for free](https://aws.amazon.com)
-- A [A AmazonSNS User](https://aws.amazon.com/pt/iam/)
-
 ## Usage
 
 1. Set up your credentials as secrets in your repository settings using `AWS_REGION`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`
