@@ -14,12 +14,12 @@ AWS.config.update({
 });
 
 async function run() {
-  const FROM_PHONE_NUMBER = core.getInput("FROM_PHONE_NUMBER");
-  const SMS_TEXT_CONTENT = core.getInput("SMS_TEXT_CONTENT");
+  const MESSAGE = core.getInput("MESSAGE");
+  const TOPIC_ARN = core.getInput("TOPIC_ARN");
 
   const params = {
-    PhoneNumber: FROM_PHONE_NUMBER,
-    Message: SMS_TEXT_CONTENT
+    Message: MESSAGE,
+    TopicArn: TOPIC_ARN
   };
 
   const publishTextPromise = new AWS.SNS({ apiVersion: "2010-03-31" })

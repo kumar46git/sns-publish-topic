@@ -1,14 +1,14 @@
 {
-  "name": "sns-sms",
+  "name": "sns-publish-topic",
   "version": "1.0.0",
-  "description": "Send an SMS through GitHub Actions",
+  "description": "Send a SNS Topic via GitHub Actions",
   "main": "dist/index.js",
   "scripts": {
     "build": "sucrase ./src -d ./dist --transforms imports"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rafaelvicio/sns-sms.git"
+    "url": "git+https://github.com/nothingalike/sns-publish-topic.git"
   },
   "keywords": [
     "github",
@@ -17,12 +17,12 @@
     "sns",
     "sms"
   ],
-  "author": "Rafael Vicio <rafaelvicio@icloud.com> (https://github.com/rafaelvicio)",
+  "author": "Kyle Johns",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rafaelvicio/sns-sms/issues"
+    "url": "https://github.com/nothingalike/sns-publish-topic/issues"
   },
-  "homepage": "https://github.com/rafaelvicio/sns-sms#readme",
+  "homepage": "https://github.com/nothingalike/sns-publish-topic#readme",
   "dependencies": {
     "@actions/core": "^1.1.0",
     "aws-sdk": "^2.630.0"
