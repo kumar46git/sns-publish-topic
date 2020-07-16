@@ -1,6 +1,6 @@
-# SNS SMS GitHub Action
+# AWS SNS - Publish Topic
 
-Send an SMS from GitHub Actions.
+Send a SNS Topic via GitHub Actions
 
 ## Prerequisites
 
@@ -9,16 +9,16 @@ Send an SMS from GitHub Actions.
 
 ## Usage
 
-1. Set up your credentials as secrets in your repository settings using `AWS_REGION`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `FROM_PHONE_NUMBER`, `SMS_TEXT_CONTENT`
+1. Set up your credentials as secrets in your repository settings using `AWS_REGION`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`
 
 2. Add the following to your workflow
 
 ```yml
 - name: "Sending SMS Notification"
-  uses: rafaelvicio/sns-sms@1.0.1
+  uses: nothingalike/sns-publish-topic@1.0.0
   with:
-    FROM_PHONE_NUMBER: "+5561123456789"
-    SMS_TEXT_CONTENT: "Hello from AWS SNS"
+    MESSAGE: "message"
+    TOPIC_ARN: "arn:aws:sns:[your region]:[your account id]:[your topic name]"
   env:
     AWS_REGION: ${{ secrets.AWS_REGION }}
     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -27,13 +27,13 @@ Send an SMS from GitHub Actions.
 
 ## Inputs
 
-### `FROM_PHONE_NUMBER`
+### `MESSAGE`
 
-**Required** Phone number to send the SMS to
+**Required** This is your serialized message
 
-### `SMS_TEXT_CONTENT`
+### `TOPIC_ARN`
 
-**Required** The message you want to send
+**Required** This is the ARN of the SNS Topic you are publishing
 
 ### `AWS_REGION`
 
@@ -51,7 +51,7 @@ A AWS Secret Access Key. Can alternatively be stored in environment
 
 ### `MessageId`
 
-The SID of the [message resource](https://docs.aws.amazon.com/pt_br/sns/latest/dg/sns-msg-status.html) associated with the SMS sent.
+The SID of the [message resource](https://docs.aws.amazon.com/pt_br/sns/latest/dg/sns-msg-status.html) associated with the Published Topic.
 
 ## Contributing
 

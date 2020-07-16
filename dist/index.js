@@ -14,12 +14,12 @@ _awssdk2.default.config.update({
 });
 
 async function run() {
-  const FROM_PHONE_NUMBER = _core2.default.getInput("FROM_PHONE_NUMBER");
-  const SMS_TEXT_CONTENT = _core2.default.getInput("SMS_TEXT_CONTENT");
+  const MESSAGE = _core2.default.getInput("MESSAGE");
+  const TOPIC_ARN = _core2.default.getInput("TOPIC_ARN");
 
   const params = {
-    PhoneNumber: FROM_PHONE_NUMBER,
-    Message: SMS_TEXT_CONTENT
+    Message: MESSAGE,
+    TopicArn: TOPIC_ARN
   };
 
   const publishTextPromise = new _awssdk2.default.SNS({ apiVersion: "2010-03-31" })
