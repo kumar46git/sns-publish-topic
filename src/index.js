@@ -15,6 +15,8 @@ function execute() {
       accessKeyId: AWS_ACCESS_KEY_ID,
       secretAccessKey: AWS_SECRET_ACCESS_KEY
     });
+
+    core.debug(MESSAGE);
     
     const params = {
       Message: MESSAGE,
@@ -24,13 +26,17 @@ function execute() {
     const awsClient = new AWS.SNS({ apiVersion: "2010-03-31" });
 
     awsClient.publish(params, function(err, data) {
-      if (err) core.setFailed(err.Message); 
+      if (err) {
+        core.debug(err.Message);
+        core.setFailed(err.Message); 
+      }
       else {
         core.debug("Published Topic Sent!");
         return data.MessageId;
       }
     });
   }catch(error) {
+    core.debug(err.Message);
     core.setFailed(error.message);
   }
 }
